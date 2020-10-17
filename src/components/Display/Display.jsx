@@ -23,6 +23,10 @@ const Display = () => {
     }
   };
 
+  const generateNewPassword = () => {};
+
+  const copyClipboard = () => {};
+
   return (
     <>
       <div className="row">
@@ -50,7 +54,16 @@ const Display = () => {
             </div>
           </div>
           <div className="password-display-icons">
-
+            <Button 
+              className="copy-btn"
+              iconClass="far fa-copy"
+              handleClick={copyClipboard}
+            />
+            <Button 
+              className="generate-btn"
+              iconClass="fas fa-sync-alt"
+              handleClick={generateNewPassword}
+            />
           </div>
         </div>
       </div>
