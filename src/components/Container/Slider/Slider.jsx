@@ -24,7 +24,7 @@ const Slider = (props) => {
   
   const progress = (range / max) * 100 + '%';
   // console.log('progress', progress);
-  console.log('range', range);
+  // console.log('range', range);
   const styleInput = {
     background: `linear-gradient(90deg, ${activeRangeColor} 0% ${progress}, ${rangeBackground} ${progress} 100%)`
   };

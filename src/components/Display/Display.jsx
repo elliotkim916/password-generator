@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import Button from '../Container/Button/Button';
 import Container from '../Container/Container';
-import { generatePassword } from '../../utils/Helper';
+import { generatePassword, copyToClipBoard } from '../../utils/Helper';
+import Tooltip from '../Container/Tooltip/Tooltip';
 import './Display.css';
 
 const Display = () => {
@@ -9,6 +10,7 @@ const Display = () => {
   const [passwordProps, setPasswordProps] = useState();
   const [password, setPassword] = useState('');
   const passwordRef = useRef(null);
+  const [tooltip, setTooltip] = useState(false);
   let pwdDescription = '';
 
   const setBackgroundColor = password => {
@@ -32,8 +34,14 @@ const Display = () => {
     setPassword(pwd);
   };
 
-  const copyClipboard = () => {};
-  console.log('PW', password);
+  const copyClipboard = () => {
+    copyToClipBoard(passwordRef.current);
+    setTooltip(true);
+    setTimeout(() => {
+      setTooltip(false);
+    }, 2000);
+  };
+  
   return (
     <>
       <div className="row">
@@ -70,6 +78,11 @@ const Display = () => {
               className="generate-btn"
               iconClass="fas fa-sync-alt"
               handleClick={generateNewPassword}
+            />
+            <Tooltip 
+              message="Copied"
+              position="left"
+              displayTooltip={tooltip}
             />
           </div>
         </div>
