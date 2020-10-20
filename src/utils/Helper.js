@@ -9,7 +9,7 @@ const setUpperCase = isUpperCase => {
   return '';
 };
 
-const isLowerCase = isLowerCase => {
+const setLowerCase = isLowerCase => {
   if (isLowerCase) {
     characters += 'abcdefghijklmnopqrstuvwxyz';
   }

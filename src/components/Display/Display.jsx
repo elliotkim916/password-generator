@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
 import Button from '../Container/Button/Button';
+import Container from '../Container/Container';
+import { generatePassword } from '../../utils/Helper';
 import './Display.css';
 
 const Display = () => {
+  const [rangeValue, setRange] = useState();
+  const [passwordProps, setPasswordProps] = useState();
   const [password, setPassword] = useState('');
   const passwordRef = useRef(null);
   let pwdDescription = '';
@@ -23,10 +27,13 @@ const Display = () => {
     }
   };
 
-  const generateNewPassword = () => {};
+  const generateNewPassword = () => {
+    const pwd = rangeValue > 3 ? generatePassword(passwordProps, rangeValue) : generatePassword(passwordProps, 3);
+    setPassword(pwd);
+  };
 
   const copyClipboard = () => {};
-
+  console.log('PW', password);
   return (
     <>
       <div className="row">
@@ -67,6 +74,11 @@ const Display = () => {
           </div>
         </div>
       </div>
+      <Container 
+        setPassword={setPassword}
+        setRange={setRange}
+        setPasswordProps={setPasswordProps}
+      />
     </>
   );
 };
